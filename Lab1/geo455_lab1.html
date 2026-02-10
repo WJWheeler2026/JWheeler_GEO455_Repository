@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GEO 455 - Lab 1</title>
+
+  <style>
+    body { font-family: system-ui, Arial, sans-serif; margin: 0; line-height: 1.5; }
+    header, main, footer { max-width: 900px; margin: 0 auto; padding: 16px; }
+    nav a { margin-right: 12px; }
+    .hero { background: #f3f3f3; border-radius: 12px; padding: 16px; }
+    .center { text-align: center; }
+    img { max-width: 100%; height: auto; }
+  </style>
+</head>
+
+<body>
+  <header>
+ 
+   <h1 class="center">Jack Wheeler</h1>
+    <p class="center">GEO 455 • Web Mapping • Spring 2026</p>
+    <nav class="center">
+      <a href="#about">About</a>
+      <a href="#books">Books</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section style="background-color: mediumaquamarine" class="hero" id="about">
+      <body style= "background-color: lightcyan;"></body>
+      <h2>About me</h2>
+      <p>Hi! I’m a Geography and Environmental Science major interested in limnology.</p>
+      <!-- IMAGE TEMPLATE (required) -->
+      <figure>
+        <!-- If this file is in an images/ folder next to this HTML file, use: images/profile.jpg -->
+        <!-- If this HTML file is inside a labs/ folder, use: ../images/profile.jpg -->
+        <img src="images/DevilLake_Oregon.jpg" width="320">
+        <figcaption>Figure 1: Photo of Devil Lake located in Oregon taken during the Summer. Oregon, and more widely the Pacific Northwest, is a region I've always wished to explore.</figcaption>
+      </figure>
+    </section>
+
+    <section id="books">
+      <h2>Books I recently read</h2>
+      <ul>
+        <li><a href="https://www.penguinrandomhouse.com/books/136208/in-search-of-lost-time-volume-ii-within-a-budding-grove-by-marcel-proust/">In Search of Lost Time Vol II: Within a Budding Grove</a></li>
+        <li><a href="https://www.penguinrandomhouse.com/books/286344/the-brothers-karamazov-by-fyodor-dostoyevsky-translated-with-an-introduction-and-notes-by-david-mcduff-cover-illustrated-by-coralie-bickford-smith/">The Brothers Karamazov</a></li>
+      </ul>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>
+        <a href="mailto:wheeler9289@uwlax.edu?subject=GEO%20455%20Webmapping">Email me</a>
+        • <a href="https://github.com/WJWheeler2026">GitHub</a>
+      </p>
+    </section>
+  </main>
+
+<footer class="center">
+    <button onclick="document.location='../Ex2/example-2-04.html'">Back to Main Page</button>
+  </footer>
+</body>
+</html>
