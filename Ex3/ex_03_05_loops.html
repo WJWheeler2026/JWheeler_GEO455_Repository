@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>ex3-05</title>
+    </head>
+<body>
+
+<h2>JavaScript For Loop</h2>
+
+<p id="demo"></p>
+<p id="demo1"></p>
+<p id="demo2"></p>
+<p id="demo3"></p>
+<p id="demo4"></p>
+<p id="demo5"></p>
+
+<script>
+    var num = "";
+    
+    for (var i = 2; i < 41; i++) { // change to a different number
+        num += "The number is " + i + "<br>";
+    }
+    document.getElementById("demo").innerHTML = num;
+    
+    var num_brk = "";
+    
+    for (var z = 4; z < 27; z++) {
+        if(z===22) {break;}
+        num_brk += "The number is " + z + " lets loop again" + "<br>";
+    }
+    document.getElementById("demo1").innerHTML = num_brk;
+    
+    
+    var cars = ["Tesla", "Volvo", "BMW", "Ford", "Fiat", "Audi", "Citroen", "Tata", "Huwei", "Buick", "Renault", "Scion"];
+    
+    var carnames = "";
+    
+    for (var j = 0; j < cars.length; j++) {
+        carnames += cars[j] + "<br>";
+    }
+    document.getElementById("demo2").innerHTML = carnames;
+    
+    
+    var countries = ["United States", "Japan", "Nepal", "Greece", "Norway", "China", "Mongolia", "St. Kitts and Nevis"];
+    
+    var countrynames = "";
+    
+    for (var j = 0; j < countries.length; j++) {
+        countrynames += countries[j] + "<br>";
+    }
+    document.getElementById("demo3").innerHTML = countrynames;
+    
+    
+    var trucks = ["Ford Raptor", "RAM 1500", "Chevrolet Silverado", "Honda Ridgeline", "Nissan Frontier"];
+    
+    var trucknames = "";
+    
+    for (var j = 0; j < trucks.length; j++) {
+        trucknames += trucks[j] + "<br>";
+    }
+    document.getElementById("demo4").innerHTML = trucknames;
+    
+    
+    var num_break = "";
+    
+    for (var z = 1; z < 250; z++) {
+        if(z===51) {break;}
+        num_break += "The number is " + z + ", the list goes on" + "<br>";
+    }
+    document.getElementById("demo5").innerHTML = num_break;
+    <!-- Remember, "+=" is needed to add 1 to your looped list! Siimply placing "=" will display the final object in the list, whereas "+" will break your script and display nothing at all. --!>
+</script>
+
+<button onclick="document.location='geo455_ex3.html'">Back to Main Page</button>
+    
+</body>
+</html>

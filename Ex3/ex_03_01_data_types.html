@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>ex3-01</title>
+    </head>
+<body>
+
+    <h2>Assigning JavaScript Values</h2>
+
+    <p>In JavaScript the = operator is used to assign values to variables.</p>
+
+    <p id="add"></p>
+    <p id="add1"></p>
+    <p id="sub"></p>
+    <p id="mult1"></p>
+    <p id="mult2"></p>
+    <p id="mult3"></p>
+    <p id="divis"></p>
+    <p id="incree"></p>
+    <p id="decree"></p>
+    <p id="concata"></p>
+    <p id="list"></p>
+    <p id ="list1"></p>
+    <p id="bool"></p>
+    <p id="bool1"></p>
+
+    <script> //javascript starts here //
+        var x = 7;
+        var y = 4;
+        document.getElementById("add").innerHTML = x + x; //"add" id will return the calculation from script to the html document where "add" is used within <p> tag
+        document.getElementById("sub").innerHTML = y - y;
+        document.getElementById("mult1").innerHTML = x * y;
+        document.getElementById("mult2").innerHTML = x * 10;
+        document.getElementById("add1").innerHTML = x + 12;
+        document.getElementById("mult3").innerHTML = y * 40;
+        document.getElementById("divis").innerHTML = y / y;
+        
+        
+        var z = 11
+        z++;
+        document.getElementById("incree").innerHTML = z;
+        
+        z--;
+        document.getElementById("decree").innerHTML = z;
+
+        var s1 = "Jack";
+        var s2 = "Wheeler";
+        document.getElementById("concata").innerHTML = s1 +" "+ s2;
+
+        var list = "<ul>";
+        list += "<li>Volkswagen</li>";
+        list += "<li>Fiat</li>";
+        list += "<li>Suzuki</li>";
+        list += "<li>Tata</li>"
+        list += "<li>Citroen</li>"
+        list += "</ul>";
+        
+        var val1= 9;
+        var val2 = 11;
+        
+        document.getElementById("list").innerHTML = list; // returns all values in the list
+        document.getElementById("bool").innerHTML = val1 > val2;
+        
+        const val3= 27;
+        const val4= 14;
+        
+        document.getElementById("list").innerHTML = list;
+        document.getElementById("bool1").innerHTML = val4 < val3
+    </script>
+    
+    <button onclick="document.location='geo455_ex3.html'">Back to Main Page</button>
+    
+</body>
+</html>

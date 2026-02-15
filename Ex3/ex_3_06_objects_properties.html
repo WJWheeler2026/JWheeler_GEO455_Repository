@@ -1,0 +1,66 @@
+<html lang="en">
+    <head>
+    <title>ex3-06</title>
+    </head>
+  <body>
+<h2>JS Objects: Properties + Methods</h2>
+<p id="out"></p>
+<p id="in"></p>
+
+<script>
+  // An object with PROPERTIES (data) and METHODS (functions)
+  const student = {
+    name: "Jack",          // property
+    major: "Geography and Environmental Sciences",    // property
+    credits: 105,           // property
+    
+    // method (uses properties via "this")
+    intro() {
+      return `Hi, I'm ${this.name}. I'm majoring in ${this.major}.`;
+    },
+    
+    // method that changes a property
+    addCredits(amount) {
+      this.credits += amount;
+      return this.credits;
+    }
+  };
+  
+  const msg = [
+    `Property example: ${student.name}`,
+    `Method example: ${student.intro()} Currently, I have ${student.credits} credits`,
+    `Method changes property: Next semester I will have ${student.addCredits(16)} credits`
+  ].join("<br>");
+  
+  document.getElementById("out").innerHTML = msg;
+  
+  
+  const city = {
+    name: "Mobile",
+    location: "Gulf Coast",
+    temp: 51,
+    
+    intro() {
+      return `${this.name} is located along the ${this.location}.`;
+    },
+    
+    addTemp(amount) {
+      this.temp += amount;
+      return this.temp;
+    }
+  };
+  // for different sections, remember to change the variable name! //
+  // i.e: const msg ~ const citymsg //
+  const citymsg = [
+    `Property example: ${city.name}`,
+    `Method example: ${city.intro()} In January, the average temperature is ${city.temp} degrees Farenheit`,
+    `Method changes property: In the summer, the average temperature is ${city.addTemp(39)} degrees Farenheit`
+  ].join("<br>");
+  
+  document.getElementById("in").innerHTML = citymsg;
+  
+</script>
+    
+    <button onclick="document.location='geo455_ex3.html'">Back to Main Page</button>
+</body>
+</html>

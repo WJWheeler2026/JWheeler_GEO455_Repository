@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>ex3-02</title>
+    </head>
+<body>
+
+
+    <h2>JavaScript Arrays</h2>
+
+    <p id="arr"></p>
+    <p id="arr_ind"></p>
+    <p id="arr_multd"></p>
+    <p id="arr_multd_ind"></p>
+    <p id="person_obj"></p>
+    <p id="person_obj1"></p>
+    <p id="person_obj2"></p>
+
+
+    <script>
+        var a= [2, 2.5, 4, 3.5];
+        document.getElementById("arr").innerHTML = "This is a simple array: "+ a;
+        document.getElementById("arr_ind").innerHTML = "This is the 3rd element in the above array: "+ a[2]; // change to a[1] and check//
+        
+
+        var d = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
+        document.getElementById("arr_multd").innerHTML = "This is a multi-dimensional array: "+ d;
+        document.getElementById("arr_multd_ind").innerHTML = "This is the third item in the 2nd element in a multi-dimensional array: "+ d[1][2];
+        //change to d[1][0] and check
+        
+        // Create an object:
+        var person = {
+            firstName: "Jack",
+            lastName: "Wheeler",
+            age: 22,
+            eyeColor: "blue",
+        };
+        
+        document.getElementById("person_obj").innerHTML = person.firstName + " has " + person.eyeColor + " eyes.";
+        
+        document.getElementById("person_obj1").innerHTML = person.firstName + " has the last name of " + person.lastName;
+        
+        document.getElementById("person_obj2").innerHTML = person.firstName + " is " + person.age + " years old.";
+
+
+    </script>
+    
+    <button onclick="document.location='geo455_ex3.html'">Back to Main Page</button>
+</body>
+</html>
