@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Earth Poles Viewer</title>
+    </head>
+    <body>
+        <h2 align="center">Earth Poles Viewer</h2>
+        <img id="myImage" src="images/north.svg"><br>
+        <input type="button" value="North Pole" id="north"> <!-- event listener -->
+        <input type="button" value="South Pole" id="south"> <!-- event listener -->
+        <input type="button" value="Atlantic" id="atlantic">
+        <input type="button" value="Pacific" id="pacific">
+        <script>
+            function showNorth() {              //event listeners function
+                document
+                    .getElementById("myImage")
+                    .src = "images/north.svg";
+            }
+            function showSouth() {              //event listeners function
+                document
+                    .getElementById("myImage")
+                    .src = "images/south.svg";
+            }
+             function showAtlantic() {              //event listeners function
+                document
+                    .getElementById("myImage")
+                    .src = "images/atlantic.jpg";
+            }
+             function showPacific() {              //event listeners function
+                document
+                    .getElementById("myImage")
+                    .src = "images/pacific.jpg";
+            }
+            document
+                .getElementById("north")
+                .addEventListener("click", showNorth);  //fetching the function
+            document
+                .getElementById("south")
+                .addEventListener("click", showSouth);  //fetching the function
+            document
+                .getElementById("atlantic")
+                .addEventListener("click", showAtlantic);  //fetching the function
+            document
+                .getElementById("pacific")
+                .addEventListener("click", showPacific);  //fetching the function
+        </script>
+    </body>
+    <button onclick="document.location='geo455_ex4.html'">Back to Main Page</button>
+</html>
+

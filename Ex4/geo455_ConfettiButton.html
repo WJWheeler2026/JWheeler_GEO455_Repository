@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Confetti Button</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin-top: 100px;
+        background: #f5f5f5;
+    }
+
+    button {
+        padding: 12px 24px;
+        font-size: 18px;
+        background: cadetblue;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+
+    button:hover {
+        background: lavenderblush;
+    }
+
+    /* Confetti pieces */
+    .confetti {
+        position: fixed;
+        width: 10px;
+        height: 10px;
+        background-color: red;
+        top: 0;
+        left: 0;
+        opacity: 0.9;
+        pointer-events: none;
+        z-index: 9999;
+    }
+</style>
+</head>
+<body>
+
+<button id="confettiBtn">Wei!</button>
+
+<script>
+function partytime() {
+    const colors = ['#f8f8fb', '#2b2727', '#9f565b', '##dea69a', '#fbb1bd', '#f9bec7', '#f7cad0', '#8b7368', '#f3f0db', '#f7bf9b'];
+
+    for (let i = 0; i < 100; i++) {
+        const confetti = document.createElement('div');
+        confetti.classList.add('confetti');
+        document.body.appendChild(confetti);
+
+        // Random color
+        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+
+        // Random position
+        confetti.style.left = Math.random() * window.innerWidth + 'px';
+        confetti.style.top = '-10px';
+
+        // Random size
+        const size = Math.random() * 8 + 4;
+        confetti.style.width = size + 'px';
+        confetti.style.height = size + 'px';
+
+        // Animation
+        const fallDuration = Math.random() * 3 + 2; // 2-5 seconds
+        const horizontalMove = (Math.random() - 0.5) * 200; // left/right drift
+        confetti.animate([
+            { transform: `translate(0, 0) rotate(0deg)` },
+            { transform: `translate(${horizontalMove}px, ${window.innerHeight + 20}px) rotate(${Math.random() * 720}deg)` }
+        ], {
+            duration: fallDuration * 1000,
+            easing: 'ease-out',
+            iterations: 1
+        });
+
+        // Remove after animation
+        setTimeout(() => confetti.remove(), fallDuration * 1000);
+    }
+}
+
+document.getElementById('confettiBtn').addEventListener('click', partytime);
+</script>
+
+</body>
+    <button onclick="document.location='geo455_ex4.html'">Back to Main Page</button>
+</html>
