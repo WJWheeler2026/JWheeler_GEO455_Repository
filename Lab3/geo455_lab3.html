@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GEO 455: Lab 3</title>
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+  
+  <!-- Make sure you put the leaflet map library AFTER Leaflet's CSS --> 
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  
+  <!--Your choice of Google fonts- make sure to update in CSS file -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Mako&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
+
+  <!-- Your CSS -->
+  <link rel="stylesheet" href="geo455_lab3.css" />
+</head>
+<body>
+
+  <h1 id="title">Lab 3: Tour of the Ionian Islands and Pelopponese</h1>
+   
+  <div id="map"></div>
+  <div id="description">
+    <h2>Destination Ideas</h2>
+     <ol type="1">
+     <li> Athens </li>
+     <li> Corinth </li>
+     <li> Aigio </li>
+     <li> Patras </li>
+     <li> Sami </li>
+     <li> Zakinthos </li>
+     <li> Kalamata </li>
+     <li> Sparti </li>
+     <li> Neapoli Voion </li>
+     <li> Kithira Island </li>
+     </ol>
+     <p>
+      <img style="width: relative; height:150px" src="images/sparti_greece.jpg">
+     </p>
+    <p>Image found under Creative Common License Search.</p>
+    <button onclick="document.location='../index.html'">Back to Main Page</button>
+  </div>
+  <!-- Your map code  -->
+  <script src="lab3_map.js"></script>
+<div id="footer">Map developed by Jack Wheeler</div>
+</body>
+</html>
