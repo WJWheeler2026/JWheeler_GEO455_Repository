@@ -111,9 +111,9 @@ greatWallLine.bindPopup(greatwallPopup, customOptions);
 greatWallLine.bindTooltip("Great Wall of China", { sticky: true });
 
 // Zoom to full wall when clicked
-greatWallLine.on("click", function () {
-  map.fitBounds(greatWallLine.getBounds(), {
-    padding: [50, 50]
+greatWallLine.on("click", function(e) {
+  map.flyTo(e.latlng, 13, {
+        duration: 5
   });
 });
 
