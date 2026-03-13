@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>GEO 455: Lab 5</title>
+
+<!-- Bootstrap -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Leaflet -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<!-- Easy Button -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.css">
+<script src="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.js"></script>
+
+<!-- MiniMap -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-minimap@3.3.1/dist/Control.MiniMap.min.css">
+<script src="https://cdn.jsdelivr.net/npm/leaflet-minimap@3.3.1/dist/Control.MiniMap.min.js"></script>
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Mako&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
+
+<!-- Custom CSS -->
+<link rel="stylesheet" href="geo455_lab5.css" />
+
+<style>
+#map {
+  min-height: calc(100vh - 56px);
+}
+</style>
+
+</head>
+
+<body class="bg-light">
+
+<!-- Top bar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom sticky-top">
+<div class="container-fluid">
+<span class="navbar-brand fw-semibold">Lab 5: JavaScript Interactivity</span>
+<span class="fw-semibold">GEO 455: Webmapping</span>
+</div>
+</nav>
+
+<div class="container-fluid">
+<div class="row g-3 py-3">
+
+<!-- Map Column -->
+<div class="col-lg-9">
+<div class="card shadow-sm">
+<div class="card-body p-0">
+<div id="map" aria-label="Interactive map"></div>
+</div>
+</div>
+</div>
+
+<!-- Sidebar -->
+<div class="col-lg-3">
+
+<div class="card shadow-sm mb-3">
+<div class="card-body">
+
+<h6 class="mb-1">Click coordinates</h6>
+<p class="text-muted small mb-2">
+Click anywhere on the map to read the location.
+</p>
+
+<div class="small">
+<div><span class="fw-semibold">Lat:</span> <span id="click-lat">—</span>°</div>
+<div><span class="fw-semibold">Lon:</span> <span id="click-lon">—</span>°</div>
+<div class="text-muted mt-1">
+<span class="fw-semibold">Press 'Escape' to clear the pop-up.</span>
+</div>
+</div>
+
+<hr>
+
+<h6 class="mb-1">Where is the International Space Station now?</h6>
+
+<div class="small">
+<div><span class="fw-semibold">Latitude:</span> <span id="lat">—</span>°</div>
+<div><span class="fw-semibold">Longitude:</span> <span id="lon">—</span>°</div>
+<div class="text-muted mt-1">
+<span class="fw-semibold">Updated:</span> <span id="iss-time">—</span>
+</div>
+</div>
+
+<button id="btn-iss" class="btn btn-primary btn-sm mt-2">
+Jump to ISS
+</button>
+
+<hr>
+
+<ul class="small text-muted">
+<li>Use the layer control to switch basemaps.</li>
+<li>Click icons to zoom to the Seven Wonders.</li>
+<li>Click the globe icon to return to the default view.</li>
+</ul>
+
+<div id="wonder-buttons" class="d-grid gap-2"></div>
+
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+<!-- Assignment Details -->
+<div class="container mt-4">
+<h1 id="title">Lab 5: Tour of the 7 Wonders of the World</h1>
+
+<div id="description">
+<h2>Assignment Details</h2>
+
+<p>
+In this assignment, we are working with layer controls and plugins. We have three layers:
+street map, satellite imagery, and topographic map.
+Landmarks are based on Encyclopedia Britannica's entry on
+<a href="https://www.britannica.com/list/new-seven-wonders-of-the-world">
+New Seven Wonders of the World
+</a>
+and the images are linked from Wikimedia Commons. Included is a tracker for the International Space Station,
+along with a function that displays the coordinates of where you click on the map.
+</p>
+
+<button onclick="document.location='../index.html'" class="btn btn-secondary btn-sm">
+Back to Main Page
+</button>
+</div>
+
+</div>
+
+<!-- Map Script -->
+<script src="lab5_map.js"></script>
+
+<div id="footer">Map developed by Jack Wheeler</div>
+
+</body>
+</html>

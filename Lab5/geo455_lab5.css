@@ -1,0 +1,45 @@
+/* General font and background */
+body { font-family: "Mako", sans-serif; background-color: whitesmoke; color: #3d3d3d; }
+
+/* Leaflet popup style */
+.custom .leaflet-popup-tip,
+.custom .leaflet-popup-content-wrapper {
+  background: #000;
+  color: #fff;
+}
+
+/* Scrollable description links */
+#description a { color: #005daa; text-decoration: none; }
+#description a:hover { text-decoration: underline; }
+
+#description {
+  position: fixed;
+  left: 12px;
+  bottom: 225px;
+  width: 225px;
+  height: 515px;
+  max-width: calc(100vw - 20px);
+  padding: 0 15px;
+  background: whitesmoke;
+  border: 1px solid #777;
+  border-radius: 6px;
+  z-index: 800;
+  font-size: 0.95rem;
+}
+
+#footer {
+  position: fixed;
+  bottom: 0;
+  left: 12px;
+  width: 300px;
+  font-size: 0.95;
+  font-family: "EB Garamond", serif;
+  letter-spacing: .04em;
+  text-align-last: center;
+  margin: 0;
+  padding: 10px 15px;
+  background: rgba(148, 253, 204, 0.5);
+  border: 1px solid #777;
+  border-radius: 6px;
+  z-index: 800;
+}
