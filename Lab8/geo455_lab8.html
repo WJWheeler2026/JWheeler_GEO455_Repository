@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>geo455_lab9</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+    <!-- Load Googple Fonts API -->
+       <link rel="preconnect" href="https://fonts.googleapis.com">
+       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+       <link href="https://fonts.googleapis.com/css2?family=Roboto+Serif:wght@100&display=swap" rel="stylesheet">
+    <script src="https://lycheelin.github.io/leaflet.migrationLayer/src/src.js"></script>
+    <script src="https://unpkg.com/leaflet-providers@latest/leaflet-providers.js"></script>
+    <script src="dane_data.js"></script>
+    <script src="lab_loc.js"></script>
+    <style>
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: "Roboto Serif", Helvetica, Arial, sans-serif;
+}
+
+/* HEADER */
+#header {
+  background-color: cadetblue;
+  padding: 10px;
+  text-align: center;
+  color: aliceblue;
+}
+
+/* BUTTON CONTAINER */
+#event {
+  margin-top: 10px;
+}
+
+/* BUTTON STYLE (NEW) */
+.btn {
+  background-color: #ffffff;
+  border: 2px solid #2f6f73;
+  color: #2f6f73;
+  padding: 8px 14px;
+  margin: 5px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn:hover {
+  background-color: #2f6f73;
+  color: white;
+  transform: translateY(-1px);
+}
+
+.btn:active {
+  transform: scale(0.96);
+}
+
+.btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(47, 111, 115, 0.3);
+}
+
+/* MAIN LAYOUT */
+#main {
+  display: flex;
+  height: calc(100vh - 120px); /* adjusts for header */
+}
+
+/* MAP */
+#map {
+  flex: 3;
+  height: 100%;
+}
+
+/* INFO PANEL */
+#info {
+  flex: 1;
+  background: #f4f4f4;
+  padding: 15px;
+  overflow-y: auto;
+  border-left: 2px solid #ccc;
+}
+
+/* CARD STYLE */
+.card {
+  background: white;
+  padding: 10px;
+  border-radius: 6px;
+}
+    </style>
+</head>
+
+<body>
+  <div id="header">
+    <h1>Lab 9: Commuting to Dane County (2011-2015)</h1>
+
+    <div id="event">
+      <input type="button" value="Hide" class="btn" onclick="hide()">
+      <input type="button" value="Show" class="btn" onclick="show()">
+      <input type="button" value="Pause" class="btn" onclick="pause()">
+      <input type="button" value="Play" class="btn" onclick="play()">
+    </div>
+  </div>
+
+  <div id="main">
+    
+    <!-- MAP -->
+    <div id="map"></div>
+
+    <!-- INFO PANEL -->
+    <div id="info">
+      <div class="card">
+        <h3>What to Expect?</h3>
+
+        <p><strong>Main Info</strong></p>
+        <p>This is a flowmap showing the daily number of commuters traveling to Dane County, Wisconsin.</p>
+        <p>Thicker, darker-colored arrows show greater numbers of workers traveling to Dane County from their county of residence.</p>
+        <p>Thinner, lightly-colored arrows show fewer numbers of workers headed for Dane County.</p>
+        
+        <p><strong>Controls</strong></p>
+        <P>At the top of the screen are four buttons: "Hide", "Show", "Pause", and "Play". They are all rather intuitive.</P>
+        <p>Click "Hide" to make the flowlines disappear.</p>
+        <p>Click "Show" to make the flowlines reappear.</p>
+        <p>Click "Pause" to halt the animation, and make the flowlines static.</p>
+        <p>Click "Play" to resume the animation.</p>
+        
+        <hr>
+               <p class="small text-muted ms-1 mb-1">Map authored by Jack Wheeler</p>
+               <a href="../index.html" class="small text-muted ms-1">Back to Main Page</a>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="map_lab8.js"></script>
+</body>
+
+</html>
