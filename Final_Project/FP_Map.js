@@ -29,7 +29,7 @@ var fullZoom = 7;
 
 // Button to reset view
 L.easyButton(
-  '<img src="FPimages/globe_icon.png" height="20px">',
+  '<img src="FPimages/Globe_icon.png" height="20px">',
   function() {
     mymap.flyTo(fullExtent, fullZoom, { duration: 2 });
   },
