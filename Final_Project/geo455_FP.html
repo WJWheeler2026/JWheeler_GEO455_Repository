@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Final Project Map</title>
+
+  <!-- Leaflet -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+   <!-- Easy Button -->
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.css">
+   <script src="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.js"></script>
+   
+   <!-- MiniMap -->
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-minimap@3.3.1/dist/Control.MiniMap.min.css">
+   <script src="https://cdn.jsdelivr.net/npm/leaflet-minimap@3.3.1/dist/Control.MiniMap.min.js"></script>
+   
+   <!-- Custom CSS -->
+   <link rel="stylesheet" href="geo455_FP.css" />
+   
+</head>
+
+<body>
+
+  <!-- ===== TOP BAR ===== -->
+  <div id="topbar">
+    <div class="title">
+      Evaluating Solar Farm Viability in the State of North Carolina
+    </div>
+    <input type="text" class="search-bar" placeholder="Search Bar">
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <div id="container">
+
+    <!-- MAP -->
+    <div id="map"></div>
+
+    <!-- RIGHT PANEL -->
+    <div class="right-panel">
+
+      <div class="panel-box">
+        <strong>Information Panel #1</strong><br>
+        (Existing Projects)<br>
+        (Concentrated Solar Radiance)<br>
+        Land Cover / Shaded Relief<br>
+      </div>
+
+      <div class="panel-box">
+        <strong>Information Panel #2</strong><br>
+        (In-Depth Info)
+      </div>
+
+      <div class="panel-box light">
+        <strong>Possible Legend Location</strong><br>
+        Multiple / interchangeable
+      </div>
+
+      <hr>
+      <div class="credit">
+        Cartographer: Jack Wheeler<br>
+        <a href="../index.html" class="small text-muted ms-1">Back to Main Page</a>
+      </div>
+
+    </div>
+
+  </div>
+   
+   <!-- Map JS -->
+   <script src="FP_Map.js"></script>
+
+</body>
+
+</html>

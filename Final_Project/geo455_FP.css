@@ -1,0 +1,95 @@
+html, body {
+      margin: 0;
+      height: 100%;
+      font-family: Arial, sans-serif;
+    }
+
+    /* ===== TOP BAR ===== */
+    #topbar {
+      height: 60px;
+      background: #3b7f8c;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+    }
+
+    .title {
+      font-weight: bold;
+    }
+
+    .search-bar {
+      padding: 5px;
+      width: 220px;
+    }
+
+    /* MAIN LAYOUT */
+    #container {
+      display: flex;
+      height: calc(100vh - 60px);
+      position: relative;
+    }
+
+    /* MAP CSS */
+      #map {
+  flex: 3;
+  height: 100%;
+}
+
+    /* LEFT FLOATING CONTROLS */
+    .left-controls {
+      position: absolute;
+      top: 90px;
+      left: 15px;
+      z-index: 1000;
+    }
+
+    .btn-box {
+      background: #7fb7c2;
+      padding: 8px;
+      margin-bottom: 8px;
+      text-align: center;
+      cursor: pointer;
+      border: 1px solid #333;
+    }
+
+    /* RIGHT PANEL */
+    .right-panel {
+      width: 300px;
+      background: #cfe3e8;
+      padding: 10px;
+      overflow-y: auto;
+    }
+
+    .panel-box {
+      background: #3b7f8c;
+      color: white;
+      padding: 10px;
+      margin-bottom: 15px;
+    }
+
+    .panel-box.light {
+      background: #7fb7c2;
+      color: black;
+    }
+
+    .credit {
+      background: #eee;
+      padding: 5px;
+      text-align: center;
+      font-size: 12px;
+    }
+
+/* LEGEND */
+.info.legend {
+  background: white;
+  padding: 10px;
+  font: 14px Arial, Helvetica, sans-serif;
+  box-shadow: 0 0 5px rgba(0,0,0,0.3);
+  border-radius: 5px;
+}
+
+.info.legend h4 {
+  margin: 0 0 5px;
+}
