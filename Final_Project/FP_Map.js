@@ -5,12 +5,10 @@ const mymap = L.map('map', {
 });
 
 // BASE LAYERS
-const Stadia_StamenTonerDark = L.tileLayer(
-  'https://tiles.stadiamaps.com/tiles/stamen_toner_dark/{z}/{x}/{y}{r}.{ext}', {
-    minZoom: 0,
-    maxZoom: 20,
-    attribution: '&copy; Stadia Maps & Stamen Design & OpenStreetMap contributors',
-    ext: 'png'
+const CartoDB_DarkMatter = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+	attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+	subdomains: 'abcd',
+	maxZoom: 20
 }).addTo(mymap);
 
 const Esri_WorldImagery = L.tileLayer(
@@ -175,7 +173,7 @@ fetch("./Data/NC_DNI.json")
 
 // LAYER CONTROL
 const baseMaps = {
-  "Dark": Stadia_StamenTonerDark,
+  "Dark": CartoDB_DarkMatter,
   "Imagery": Esri_WorldImagery
 };
 
