@@ -1,70 +1,121 @@
-// Initialize map
-var mymap = L.map('map', {
+// INITIALIZE MAP
+const mymap = L.map('map', {
   center: [35.5, -79],
   zoom: 7
 });
 
-// Base layers
-var Esri_WorldStreetMap = L.tileLayer(
-  'https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}',
-  { attribution: 'Tiles © Esri' }
-).addTo(mymap);
+// BASE LAYERS
+const Stadia_StamenTonerDark = L.tileLayer(
+  'https://tiles.stadiamaps.com/tiles/stamen_toner_dark/{z}/{x}/{y}{r}.{ext}', {
+    minZoom: 0,
+    maxZoom: 20,
+    attribution: '&copy; Stadia Maps & Stamen Design & OpenStreetMap contributors',
+    ext: 'png'
+}).addTo(mymap);
 
-var Esri_WorldImagery = L.tileLayer(
+const Esri_WorldImagery = L.tileLayer(
   'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
   { attribution: 'Tiles © Esri' }
 );
 
-// MiniMap
-var miniLayer = L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png");
+// MINIMAP
+const miniLayer = L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png");
 
 new L.Control.MiniMap(miniLayer, {
   toggleDisplay: true,
   minimized: false
 }).addTo(mymap);
 
-// Full extent
-var fullExtent = [35.5, -79];
-var fullZoom = 7;
+// RESET VIEW
+const fullExtent = [35.5, -79];
+const fullZoom = 7;
 
-// Button to reset view
 L.easyButton(
   '<img src="FPimages/Globe_icon.png" height="20px">',
-  function() {
+  function () {
     mymap.flyTo(fullExtent, fullZoom, { duration: 2 });
   },
   "Return to world view"
 ).addTo(mymap);
 
-// Color function
-function getColor(agrivolt) {
-  if (!agrivolt) return "#95a5a6";
+// COLOR FUNCTIONS
+// OVERLAY #1: USPVDB (Cool Palette)
+function getCapacityColor(mw) {
+  if (!mw) return "#ccc";
 
-  var val = agrivolt.toString().trim().toLowerCase();
-
-  if (val === "agrivoltaic") return "#2ecc71";
-  if (val === "non-agrivoltaic") return "#e74c3c";
-
-  return "#95a5a6";
+  return mw > 80 ? '#084081' :
+         mw > 60 ? '#0868ac' :
+         mw > 40 ? '#2b8cbe' :
+         mw > 20 ? '#4eb3d3' :
+         mw > 10 ? '#7bccc4' :
+         mw > 5  ? '#a8ddb5' :
+         mw > 1  ? '#ccebc5' :
+                   '#f0f9e8';
 }
 
-// Layer
-var currentProjects = L.geoJSON(null, {
+// OVERLAY #2: DNI (Warm Palette)
+function getDNIColor(value) {
+  if (!value) return "#ccc";
+
+  return value > 4800 ? '#7f0000' :
+         value > 4600 ? '#b30000' :
+         value > 4400 ? '#d7301f' :
+         value > 4200 ? '#ef6548' :
+         value > 4000 ? '#fc8d59' :
+         value > 3800 ? '#fdbb84' :
+         value > 3600 ? '#fdd49e' :
+                         '#fff5eb';
+}
+
+// CONTEXT LAYER: NC STATE BOUNDARY
+const ncBoundary = L.geoJSON(null, {
+  style: function () {
+    return {
+      color: "#ffffff",
+      weight: 2,
+      opacity: 1,
+      fill: false
+    };
+  }
+}).addTo(mymap);
+
+const ncBoundaryHalo = L.geoJSON(null, {
+  style: function () {
+    return {
+      color: "#d3d3d3",
+      weight: 3,
+      opacity: 0.6,
+      fill: false
+    };
+  }
+}).addTo(mymap);
+
+fetch("./Data/NC_Bound.json")
+  .then(res => res.json())
+  .then(data => {
+    ncBoundaryHalo.addData(data);
+    ncBoundary.addData(data);
+  });
+
+// OVERLAY #1: EXISTING PROJECTS LAYER
+const currentProjects = L.geoJSON(null, {
 
   style: function (feature) {
+    const color = getCapacityColor(feature.properties.p_cap_ac);
+
     return {
-      color: "Orange",
+      color: color,
       weight: 3,
       fillOpacity: 0.9,
-      fillColor: getColor(feature.properties.p_agrivolt)
+      fillColor: color
     };
   },
 
   onEachFeature: function (feature, layer) {
-    var p = feature.properties;
+    const p = feature.properties;
 
     if (p) {
-      var popupContent = `
+      const popupContent = `
         <div style="font-size:14px; line-height:1.4;">
           <h3>${p.p_name || "Unknown Project"}</h3>
           <b>County:</b> ${p.p_county || "N/A"}<br>
@@ -74,7 +125,8 @@ var currentProjects = L.geoJSON(null, {
           <b>Azimuth:</b> ${p.p_azimuth || "N/A"}<br>
           <b>Capacity (AC):</b> ${p.p_cap_ac || "N/A"} MW<br>
           <b>Capacity (DC):</b> ${p.p_cap_dc || "N/A"} MW<br>
-          <b>Land Cover:</b> ${p.p_agrivolt || "N/A"}
+          <b>Land Cover:</b> ${p.p_agrivolt || "N/A"}<br>
+          <b>Type:</b> ${p.p_type || "N/A"}
         </div>
       `;
 
@@ -83,71 +135,124 @@ var currentProjects = L.geoJSON(null, {
   }
 }).addTo(mymap);
 
-// Load data
 fetch("./Data/uspvdb_NC.geojson")
-  .then(function(response) {
-    if (!response.ok) {
-      throw new Error("HTTP error! status: " + response.status);
-    }
-    return response.json();
-  })
-  .then(function(data) {
+  .then(res => res.json())
+  .then(data => {
     currentProjects.addData(data);
     mymap.fitBounds(currentProjects.getBounds());
-  })
-  .catch(function(error) {
-    console.error("Error loading GeoJSON:", error);
   });
 
-// Layer control
-var baseMaps = {
-  "Streets": Esri_WorldStreetMap,
+// OVERLAY #2: NC DNI LAYER
+const ncDNI = L.geoJSON(null, {
+
+  style: function (feature) {
+    const val = feature.properties.ANNUAL_AVG;
+
+    return {
+      color: getDNIColor(val),
+      weight: 1,
+      fillOpacity: 0.75,
+      fillColor: getDNIColor(val)
+    };
+  },
+
+  onEachFeature: function (feature, layer) {
+    const val = feature.properties.ANNUAL_AVG;
+
+    layer.bindPopup(`
+      <div style="font-size:14px;">
+        <b>Annual Avg DNI:</b> ${val ? val.toFixed(0) : "N/A"}
+      </div>
+    `);
+  }
+}).addTo(mymap);
+
+fetch("./Data/NC_DNI.json")
+  .then(res => res.json())
+  .then(data => {
+    ncDNI.addData(data);
+  });
+
+// LAYER CONTROL
+const baseMaps = {
+  "Dark": Stadia_StamenTonerDark,
   "Imagery": Esri_WorldImagery
 };
 
-var overlays = {
-  "Existing Projects": currentProjects
+const overlays = {
+  "Existing Projects": currentProjects,
+  "Solar Resource (DNI)": ncDNI
 };
 
 L.control.layers(baseMaps, overlays, { collapsed: false }).addTo(mymap);
 
-// Legend
-var legend = L.control({ position: "bottomright" });
 
-legend.onAdd = function () {
-  var div = L.DomUtil.create("div", "info legend");
+// LEGEND FUNCTIONS
+// OVERLAY #1: CAPACITY LEGEND
+const capacityLegend = L.control({ position: "bottomright" });
 
-  var categories = [
-    { label: "Agrivoltaic", value: "agrivoltaic" },
-    { label: "Non-Agrivoltaic", value: "non-agrivoltaic" },
-    { label: "Unknown", value: null }
-  ];
+capacityLegend.onAdd = function () {
+  const div = L.DomUtil.create("div", "info legend");
+  const grades = [1, 5, 10, 20, 40, 60, 80];
 
-  div.innerHTML += "<h4>Agrivoltaics</h4>";
+  div.innerHTML += "<h4>Capacity (MW)</h4>";
 
-  categories.forEach(function(cat) {
+  for (let i = 0; i < grades.length; i++) {
     div.innerHTML +=
-      '<i style="background:' + getColor(cat.value) + '; width:18px; height:18px; display:inline-block; margin-right:8px;"></i>' +
-      cat.label + "<br>";
-  });
+      '<i style="background:' + getCapacityColor(grades[i] + 1) +
+      '; width:18px; height:18px; display:inline-block; margin-right:8px;"></i> ' +
+      grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
+  }
 
   return div;
 };
 
-// Add legend initially
-legend.addTo(mymap);
+// OVERLAY #2: DNI LEGEND
+const dniLegend = L.control({ position: "bottomright" });
 
-// Toggle legend with layer
-mymap.on('overlayadd', function(e) {
+dniLegend.onAdd = function () {
+  const div = L.DomUtil.create("div", "info legend");
+
+  const grades = [3600, 3800, 4000, 4200, 4400, 4600, 4800];
+
+  div.innerHTML += "<h4>Annual Avg DNI</h4>";
+
+  for (let i = 0; i < grades.length; i++) {
+    div.innerHTML +=
+      '<i style="background:' + getDNIColor(grades[i] + 1) +
+      '; width:18px; height:18px; display:inline-block; margin-right:8px;"></i> ' +
+      grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
+  }
+
+  return div;
+};
+
+// DEFAULT LEGEND
+capacityLegend.addTo(mymap);
+
+// MUTUAL EXCLUSION LOGIC <--- Needs work, does not function properly
+mymap.on('overlayadd', function (e) {
+
   if (e.layer === currentProjects) {
-    legend.addTo(mymap);
+    mymap.removeLayer(ncDNI);
+    mymap.removeControl(dniLegend);
+    capacityLegend.addTo(mymap);
+  }
+
+  if (e.layer === ncDNI) {
+    mymap.removeLayer(currentProjects);
+    mymap.removeControl(capacityLegend);
+    dniLegend.addTo(mymap);
   }
 });
 
-mymap.on('overlayremove', function(e) {
+mymap.on('overlayremove', function (e) {
+
   if (e.layer === currentProjects) {
-    mymap.removeControl(legend);
+    mymap.removeControl(capacityLegend);
+  }
+
+  if (e.layer === ncDNI) {
+    mymap.removeControl(dniLegend);
   }
 });
-
-// NSRDB Solar Radiation Database API <-- Work on .shp!

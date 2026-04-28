@@ -7,7 +7,7 @@ html, body {
     /* ===== TOP BAR ===== */
     #topbar {
       height: 60px;
-      background: #3b7f8c;
+      background: #f4b400;
       color: white;
       display: flex;
       align-items: center;
@@ -57,21 +57,16 @@ html, body {
     /* RIGHT PANEL */
     .right-panel {
       width: 300px;
-      background: #cfe3e8;
+      background: rgba(0,0,0,0.3);
       padding: 10px;
       overflow-y: auto;
     }
 
     .panel-box {
-      background: #3b7f8c;
+      background: #f4b400;
       color: white;
       padding: 10px;
       margin-bottom: 15px;
-    }
-
-    .panel-box.light {
-      background: #7fb7c2;
-      color: black;
     }
 
     .credit {
