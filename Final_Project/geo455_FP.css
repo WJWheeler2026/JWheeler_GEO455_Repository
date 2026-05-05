@@ -4,7 +4,7 @@ html, body {
       font-family: Arial, sans-serif;
     }
 
-    /* ===== TOP BAR ===== */
+    /* TOP BAR */
     #topbar {
       height: 60px;
       background: #f4b400;
@@ -12,6 +12,7 @@ html, body {
       display: flex;
       align-items: center;
       justify-content: space-between;
+      border-bottom: 3px solid #2c3e50;
       padding: 0 20px;
     }
 

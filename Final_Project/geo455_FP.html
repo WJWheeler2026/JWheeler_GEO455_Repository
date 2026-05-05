@@ -9,17 +9,16 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
-   <!-- Easy Button -->
-   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.css">
-   <script src="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.js"></script>
+  <!-- Easy Button -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.css">
+  <script src="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.js"></script>
    
-   <!-- MiniMap -->
-   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-minimap@3.3.1/dist/Control.MiniMap.min.css">
-   <script src="https://cdn.jsdelivr.net/npm/leaflet-minimap@3.3.1/dist/Control.MiniMap.min.js"></script>
+  <!-- MiniMap -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-minimap@3.3.1/dist/Control.MiniMap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/leaflet-minimap@3.3.1/dist/Control.MiniMap.min.js"></script>
    
-   <!-- Custom CSS -->
-   <link rel="stylesheet" href="geo455_FP.css" />
-   
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="geo455_FP.css" />
 </head>
 
 <body>
@@ -27,9 +26,8 @@
   <!-- TOP BAR -->
   <div id="topbar">
     <div class="title">
-      Determining Solar Farm Viability in North Carolina
+      The North Carolina Solar Atlas
     </div>
-    <input type="text" class="search-bar" placeholder="Search Bar">
   </div>
 
   <!-- MAIN CONTENT -->
@@ -42,20 +40,34 @@
     <div class="right-panel">
 
       <div class="panel-box">
-        <strong>Information Panel #1</strong><br>
-        (Existing Projects - Brief Overview)<br>
-        (Concentrated Solar Radiance - Brief Overview)<br>
-        (Land Cover / Shaded Relief - Brief Overview)<br>
+        <strong>How Do I Use?</strong><br><br><br>
+        Pan, Zoom, and Interact!<br>
+        <br>
+        Use the radio buttons and check boxes on the top-right of the map frame to toggle between available baselayers and overlays.<br>
+        <br>
+        Some overlays (Capacity and Solar Resource) have popups with more info. Click on points or segments found in both overlays.<br>
       </div>
 
       <div class="panel-box">
-        <strong>Information Panel #2</strong><br>
-        (In-Depth Info)
+        <strong>Existing Locations & DNI</strong><br><br><br>
+
+        Existing solar facilities represent areas where utility-scale or commercial solar development has already proven viable. These sites are often influenced by land availability, grid proximity, policy incentives, and long-term solar resource potential. In North Carolina, many large installations are concentrated in rural areas where land is less constrained and transmission access is feasible.<br><br>
+
+        A key variable in evaluating solar potential is Direct Normal Irradiance (DNI), which measures the amount of solar radiation received per unit area by a surface that is always held perpendicular to the sun’s rays. Higher DNI values generally indicate more favorable conditions for concentrated solar power systems and can also inform photovoltaic efficiency modeling.<br><br>
+
+        Comparing existing solar sites with DNI patterns helps identify whether development aligns with optimal solar resources or whether infrastructure and policy factors have had a stronger influence on siting decisions.
       </div>
 
       <div class="panel-box light">
-        <strong>Information Panel #3</strong><br>
-        (What can be concluded?)
+        <strong>Aspect & Slope</strong><br><br><br>
+
+        Aspect refers to the direction a slope faces, while slope measures the steepness of terrain. Together, these variables play a major role in determining how much solar radiation a surface receives over time.<br><br>
+
+        In the Northern Hemisphere, south-facing slopes generally receive higher solar exposure due to the sun’s trajectory, making them more suitable for solar energy development. North-facing slopes typically receive less direct sunlight and are therefore less efficient for solar installations.<br><br>
+
+        Slope is equally important for feasibility. Gentle slopes are preferred because they reduce construction complexity, lower installation costs, and allow for more uniform panel placement. Steeper terrain can limit usable space and increase engineering requirements, even in high-irradiance areas.<br><br>
+
+        When analyzed together, aspect and slope help identify land that balances strong solar potential with practical installation conditions.
       </div>
 
       <hr>
@@ -67,10 +79,9 @@
     </div>
 
   </div>
-   
-   <!-- Map JS -->
-   <script src="FP_Map.js"></script>
+
+  <!-- MAP SCRIPT -->
+  <script src="FP_Map.js"></script>
 
 </body>
-
 </html>

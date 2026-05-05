@@ -3,11 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>North Carolina Solar Explorer</title>
+<title>The North Carolina Solar Atlas</title>
 
 <style>
 
 /* BASE */
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
@@ -45,7 +49,7 @@ header p {
     font-size: 1.2rem;
 }
 
-/* LAUNCH MAP */
+/* BUTTON */
 .btn {
     display: inline-block;
     margin-top: 20px;
@@ -61,6 +65,21 @@ header p {
 .btn:hover {
     transform: translateY(-3px) scale(1.03);
     box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+}
+
+/* SCROLL DOWN ARROW */
+.scroll-down {
+    margin-top: 30px;
+    font-size: 2rem;
+    color: #f4b400;
+    animation: bounce 1.5s infinite;
+    display: block;
+    text-decoration: none;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(10px); }
 }
 
 /* SECTIONS */
@@ -102,6 +121,26 @@ h2 {
     box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
 
+/* BACK TO TOP BUTTON */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: #f4b400;
+    color: #000;
+    padding: 12px 16px;
+    border-radius: 50%;
+    font-size: 18px;
+    text-decoration: none;
+    display: none;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+}
+
+.back-to-top:hover {
+    transform: translateY(-3px);
+}
+
 /* FOOTER */
 footer {
     text-align: center;
@@ -132,27 +171,38 @@ footer {
 <body>
 
 <!-- HERO -->
-<header>
+<header id="top">
     <div class="hero-box">
-        <h1 class="fade-in">North Carolina Solar Explorer</h1>
+        <h1 class="fade-in">The North Carolina Solar Atlas</h1>
         <p class="fade-in delay-1">
-            An interactive map showcasing solar infrastructure, radiation potential,
-            and suitable terrain across North Carolina.
+            An interactive map showcasing solar infrastructure, radiation potential, and optimal environmental conditions
+            across North Carolina.
         </p>
-        <a href="geo455_FP.html" class="btn fade-in delay-2">Launch Map</a>
+        <a href="geo455_FP.html" class="btn fade-in delay-2">Launch Viewer</a>
+
+        <!-- DOWN ARROW -->
+        <a href="#about" class="scroll-down fade-in delay-3">⬇</a>
     </div>
 </header>
 
 <!-- ABOUT -->
-<section>
+<section id="about">
     <h2 class="fade-in">About This Map</h2>
     <p class="fade-in delay-1">
-        This web map integrates solar infrastructure, Direct Normal Irradiance (DNI),
-        and terrain data to support spatial analysis of renewable energy development in one of America's leaders in solar energy. Data is designed and presented to be easily understood by students and planners.
+    I created this web map with the goal of combining environmental and infrastructure data 
+        to help users explore the possibility of expanding solar potential in the state of 
+        North Carolina. <br>
+        <br>
+        North Carolina consistently ranks in the top 5 states nationwide for solar energy production,
+        making it an excellent choice for exploring future possibilities for solar farming in the state.
+        In fact, in 2024-2025, NC was ranked 4th in the country for solar farming, with around 7.5-10% of all power coming from solar.<br>
+        <br>
+        Within the North Carolina Solar Atlas, users will interact with up-to-date data regarding existing projects,
+        solar resources, and terrain, all of which are meant to help users determine where in the state is best for solar.
     </p>
-
+    <hr>
     <p class="fade-in delay-2" style="text-align:center; font-size:14px; color:#777;">
-        Built using Leaflet, ArcGIS Pro and PHCode | GIS Data from USPVDB, NC OneMap, and NREL
+        Built using Leaflet, ArcGIS Pro and PHCode | GIS Data from United States Geological Survey, National Laboraory of the Rockies Renewable Energy Atlas, and NC OneMap
     </p>
 </section>
 
@@ -161,40 +211,32 @@ footer {
     <h2 class="fade-in">Map Layers</h2>
 
     <div class="grid">
-
         <div class="card fade-in delay-1">
             <h3>🏭 Solar Projects</h3>
-            <p>
-                Locations of existing solar installations including utility-scale
-                and distributed systems.
-            </p>
+            <p>Locations of utility-scale solar installations.</p>
         </div>
 
         <div class="card fade-in delay-2">
             <h3>☀️ Direct Normal Irradiance</h3>
-            <p>
-                Measures solar radiation intensity, highlighting high-potential
-                areas for energy generation.
-            </p>
+            <p>Highlights high solar energy potential areas.</p>
         </div>
 
         <div class="card fade-in delay-3">
-            <h3>⛰️ Shaded Relief</h3>
-            <p>
-                Terrain visualization that reveals elevation and landscape
-                influences on solar siting.
-            </p>
+            <h3>⛰️ Slope & Aspect</h3>
+            <p>Terrain suitability for solar siting.</p>
         </div>
-
     </div>
 </section>
 
 <!-- HOW TO USE -->
 <section>
-    <h2 class="fade-in">How to Use</h2>
+    <h2 class="fade-in">Methods</h2>
     <p class="fade-in delay-1">
-        Click "Launch Map" to explore. Toggle layers, zoom into areas of interest,
-        and interact with features for detailed information.
+        All data required extensive cleaning, aside from the terrain data. 
+        All datasets were reprojected in order to keep things consistent, and Clip functions were completed to ensure all data fit the bounds of North Carolina only.
+        NC OneMap terrain data collected in the form of a hillshade was run through the "Slope" and "Aspect" tools in ArcGIS Pro,
+        from which they were both reclassified into having three classes each: Ideal, Acceptable, Avoid.
+        Vector data were converted to GeoJSONs, whereas raster data was first converted to vector data before being fecthed as GeoJSONs.
     </p>
 </section>
 
@@ -203,8 +245,13 @@ footer {
     <p>Created by Jack Wheeler</p>
 </footer>
 
-<!-- SCROLL ANIMATION -->
+<!-- BACK TO TOP BUTTON -->
+<a href="#top" class="back-to-top" id="topBtn">↑</a>
+
+<!-- SCRIPTS -->
 <script>
+
+/* FADE-IN */
 const faders = document.querySelectorAll('.fade-in');
 
 const observer = new IntersectionObserver((entries, observer) => {
@@ -217,6 +264,18 @@ const observer = new IntersectionObserver((entries, observer) => {
 }, { threshold: 0.15 });
 
 faders.forEach(el => observer.observe(el));
+
+/* BACK TO TOP VISIBILITY */
+const topBtn = document.getElementById("topBtn");
+
+window.addEventListener("scroll", () => {
+    if (window.scrollY > 400) {
+        topBtn.style.display = "block";
+    } else {
+        topBtn.style.display = "none";
+    }
+});
+
 </script>
 
 </body>
