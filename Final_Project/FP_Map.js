@@ -297,9 +297,9 @@ aspectLegend.onAdd = function () {
   div.innerHTML += "<h4>Aspect</h4>";
 
   div.innerHTML +=
-    '<i style="background:#1a9641; width:18px; height:18px; display:inline-block; margin-right:8px;"></i> Ideal<br>' +
-    '<i style="background:#fdae61; width:18px; height:18px; display:inline-block; margin-right:8px;"></i> Acceptable<br>' +
-    '<i style="background:#d7191c; width:18px; height:18px; display:inline-block; margin-right:8px;"></i> Avoid';
+    '<i style="background:#1a9641; width:18px; height:18px; display:inline-block; margin-right:8px;"></i> Ideal (S, SE)<br>' +
+    '<i style="background:#fdae61; width:18px; height:18px; display:inline-block; margin-right:8px;"></i> Acceptable (E, NW, W, SW)<br>' +
+    '<i style="background:#d7191c; width:18px; height:18px; display:inline-block; margin-right:8px;"></i> Avoid (N, NE)';
 
   return div;
 };
@@ -313,9 +313,9 @@ slopeLegend.onAdd = function () {
   div.innerHTML += "<h4>Slope</h4>";
 
   div.innerHTML +=
-    '<i style="background:#1a9641; width:18px; height:18px; display:inline-block; margin-right:8px;"></i> Ideal<br>' +
-    '<i style="background:#fdae61; width:18px; height:18px; display:inline-block; margin-right:8px;"></i> Acceptable<br>' +
-    '<i style="background:#d7191c; width:18px; height:18px; display:inline-block; margin-right:8px;"></i> Avoid';
+    '<i style="background:#1a9641; width:18px; height:18px; display:inline-block; margin-right:8px;"></i> Ideal (0-5%<br>' +
+    '<i style="background:#fdae61; width:18px; height:18px; display:inline-block; margin-right:8px;"></i> Acceptable (5-15%)<br>' +
+    '<i style="background:#d7191c; width:18px; height:18px; display:inline-block; margin-right:8px;"></i> Avoid (15%+)';
 
   return div;
 };
